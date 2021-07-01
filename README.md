@@ -25,10 +25,10 @@ Add the Livewire directive `@livewire('livewire-ui-modal')` and also the Javascr
 ```html
 <html>
 <body>
-    <!-- content -->
+<!-- content -->
 
-    @livewire('livewire-ui-modal')
-    @livewireUIScripts
+@livewire('livewire-ui-modal')
+@livewireUIScripts
 </body>
 </html>
 ```
@@ -38,17 +38,25 @@ Next you will need to publish the required scripts with the following command:
 php artisan vendor:publish --tag=livewire-ui:public --force
 ```
 
+By default, tailwind modal will be called, but if you want to use bootstrap you must publish the config file:
+```shell
+php artisan vendor:publish --tag=livewire-ui:config --force
+```
+
+In config/livewire-ui-modal.php
+```php
+return [
+    'framework' => \LivewireUI\Modal\Modal::BOOTSTRAP
+];
+```
+
 **Important:** When updating to a newer version of LivewireUI modal make sure to run the command again with the `--force` flag.
 
 ## Alpine
 Livewire UI requires [Alpine](https://github.com/alpinejs/alpine). You can use the official CDN to quickly include Alpine:
 
 ```html
-<!-- Alpine v2 -->
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-
-<!-- Alpine v3 -->
-<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 ```
 
 ## TailwindCSS
@@ -258,7 +266,7 @@ By default, the modal will close when you click outside the modal. If you want t
  }
  ```
 
- By default, closing a modal by pressing the escape key will force close all modals. If you want to disable this behavior to, for example, allow pressing escape to show a previous modal, you can overwrite the static `closeModalOnEscapeIsForceful` method and have it return `false`.
+By default, closing a modal by pressing the escape key will force close all modals. If you want to disable this behavior to, for example, allow pressing escape to show a previous modal, you can overwrite the static `closeModalOnEscapeIsForceful` method and have it return `false`.
  ```php
  public static function closeModalOnEscapeIsForceful(): bool
  {
@@ -266,7 +274,7 @@ By default, the modal will close when you click outside the modal. If you want t
  }
  ```
 
- When a modal is closed, you can optionally enable a `modalClosed` event to be fired. This event will be fired on a call to `closeModal`, when the escape button is pressed, or when you click outside the modal. The name of the closed component will be provided as a parameter;
+When a modal is closed, you can optionally enable a `modalClosed` event to be fired. This event will be fired on a call to `closeModal`, when the escape button is pressed, or when you click outside the modal. The name of the closed component will be provided as a parameter;
  ```php
  public static function dispatchCloseEvent(): bool
  {
@@ -322,32 +330,32 @@ class DeleteTeam extends ModalComponent
 To purge the classes used by the package, add the following lines to your purge array in `tailwind.config.js`:
 ```js
 './vendor/livewire-ui/modal/resources/views/*.blade.php',
-'./storage/framework/views/*.php',
+    './storage/framework/views/*.php',
 ```
 
 Because some classes are dynamically build you should add some classes to the purge safelist so your `tailwind.config.js` should look something like this:
 ```js
 module.exports = {
-  purge: {
-    content: [
-      './vendor/livewire-ui/modal/resources/views/*.blade.php',
-      './storage/framework/views/*.php',
-      './resources/views/**/*.blade.php',
-    ],
-    options: {
-      safelist: [
-        'sm:max-w-2xl'
-      ]
-    }
-  },
-  darkMode: false, // or 'media' or 'class'
-  theme: {
-    extend: {},
-  },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
+    purge: {
+        content: [
+            './vendor/livewire-ui/modal/resources/views/*.blade.php',
+            './storage/framework/views/*.php',
+            './resources/views/**/*.blade.php',
+        ],
+        options: {
+            safelist: [
+                'sm:max-w-2xl'
+            ]
+        }
+    },
+    darkMode: false, // or 'media' or 'class'
+    theme: {
+        extend: {},
+    },
+    variants: {
+        extend: {},
+    },
+    plugins: [],
 }
 ```
 
