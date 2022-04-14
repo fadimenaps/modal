@@ -1,11 +1,6 @@
-{
-    "require": {
-        "bucari/modal": "dev-master"
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url":  "git@github.com:bucari/modal.git"
-        }
-    ]
-}
+"repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/umpirsky/SyliusAssortmentBundle"
+    }
+]
