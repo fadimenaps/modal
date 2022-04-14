@@ -2,33 +2,67 @@
 
 namespace LivewireUI\Modal;
 
-use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class LivewireModalServiceProvider extends PackageServiceProvider
+class LivewireModalServiceProvider extends ServiceProvider
 {
-    public function configurePackage(Package $package): void
+    public static array $scripts = ['modal.js'];
+
+    public function boot(): void
     {
-        $package
-            ->name('livewire-ui-modal')
-            ->hasConfigFile()
-            ->hasViews();
+        $this->registerViews();
+
+        $this->registerPublishables();
+
+        $this->registerComponent();
+
+        $this->registerConfig();
     }
 
-    public function bootingPackage(): void
+    private function registerViews(): void
+    {
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'livewire-ui');
+    }
+
+    private function registerComponent(): void
     {
         Livewire::component('livewire-ui-modal', Modal::class);
+    }
 
-        View::composer('livewire-ui-modal::modal', function ($view) {
-            if (config('livewire-ui-modal.include_js', true)) {
-                $view->jsPath = __DIR__.'/../public/modal.js';
-            }
+    private function registerPublishables(): void
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../resources/views' => resource_path('views/vendor/livewire-ui'),
+            ], 'livewire-ui:views');
 
-            if (config('livewire-ui-modal.include_css', false)) {
-                $view->cssPath = __DIR__ . '/../public/modal.css';
-            }
-        });
+            $this->publishes([
+                __DIR__ . '/../resources/js' => resource_path('js/vendor/livewire-ui'),
+            ], 'livewire-ui:scripts');
+
+            $this->publishes([
+                __DIR__ . '/../public' => public_path('vendor/livewire-ui'),
+            ], 'livewire-ui:public');
+        }
+    }
+
+    public function register()
+    {
+        $this->mergeConfigFrom(
+            __DIR__ . '/../resources/config/livewire-ui-modal.php', 'livewire-ui-modal'
+        );
+
+        $file = __DIR__ . '/functions.php';
+        if (file_exists($file)) {
+            require_once($file);
+        }
+    }
+
+    private function registerConfig()
+    {
+        $this->publishes([
+            __DIR__ . '/../resources/config/livewire-ui-modal.php' => config_path('livewire-ui-modal.php'),
+        ], 'livewire-ui:config');
     }
 }
