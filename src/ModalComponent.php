@@ -123,4 +123,14 @@ abstract class ModalComponent extends Component implements Contract
             }
         }
     }
+    
+    public static function bsModalWidth(): string
+    {
+        return '';
+    }
+
+    public static function bsModalTitle(): string
+    {
+        return '';
+    }
 }
