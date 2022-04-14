@@ -3,12 +3,14 @@
 namespace LivewireUI\Modal;
 
 use Exception;
-use Illuminate\View\View;
 use Livewire\Component;
 use ReflectionClass;
 
 class Modal extends Component
 {
+    const TAILWIND  = 'tailwind';
+    const BOOTSTRAP = 'bootstrap';
+    
     public ?string $activeComponent;
 
     public array $components = [];
@@ -62,8 +64,8 @@ class Modal extends Component
         ];
     }
 
-    public function render(): View
+    public function render()
     {
-        return view('livewire-ui-modal::modal');
+        return view('livewire-ui::' . modalFramework());
     }
 }
