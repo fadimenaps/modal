@@ -1,6 +1,6 @@
 "repositories": [
     {
         "type": "vcs",
-        "url": "https://github.com/umpirsky/SyliusAssortmentBundle"
+        "url": "https://github.com/bucari/modal"
     }
 ]
