@@ -5,6 +5,7 @@
     x-on:keydown.tab.prevent="$event.shiftKey || nextFocusable().focus()"
     x-on:keydown.shift.tab.prevent="prevFocusable().focus()"
 >
+
     @forelse($components as $id => $component)
         <div
             id="{{ $id }}"
