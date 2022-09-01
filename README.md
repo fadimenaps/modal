@@ -1,5 +1,5 @@
-[![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=hnfarif&show_icons=true&theme=cobalt&count_private=true)](https://github.com/hnfarif/hnfarif)
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=hnfarif&layout=compact&theme=cobalt)](https://github.com/hnfarif/hnfarif)
+[![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=hnfarif&show_icons=true&theme=cobalt&count_private=true)](https://github.com/fadimenaps/fadimenaps)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=fadimenaps&layout=compact&theme=cobalt)](https://github.com/fadimenaps/fadimenaps)
 <p align="center">
 <a href="https://github.com/wire-elements/modal/actions"><img src="https://github.com/wire-elements/modal/workflows/PHPUnit/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/wire-elements/modal"><img src="https://img.shields.io/packagist/dt/wire-elements/modal" alt="Total Downloads"></a>
