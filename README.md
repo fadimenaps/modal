@@ -1,4 +1,4 @@
-[![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=hnfarif&show_icons=true&theme=cobalt&count_private=true)](https://github.com/fadimenaps/fadimenaps)
+[![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=fadimenaps&show_icons=true&theme=cobalt&count_private=true)](https://github.com/fadimenaps/fadimenaps)
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=fadimenaps&layout=compact&theme=cobalt)](https://github.com/fadimenaps/fadimenaps)
 <p align="center">
 <a href="https://github.com/wire-elements/modal/actions"><img src="https://github.com/wire-elements/modal/workflows/PHPUnit/badge.svg" alt="Build Status"></a>
